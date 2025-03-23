@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Запах денег - Элитная парфюмерия</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Georgia', serif;
+            color: #000;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Навигационная шапка */
+        nav {
+            background: #333;
+            color: #fff;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #d4af37;
+        }
+
+        /* Шапка */
+        header {
+            background: url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
+            color: #000000;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .cta-button {
+            background: #d4af37;
+            color: #000;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            animation: fadeIn 4s ease-in-out;
+        }
+
+        .cta-button:hover {
+            background: #b69535;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Разделы */
+        section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .products, .reviews, .contacts {
+            background: #fff;
+            margin: 20px auto;
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+        }
+
+        .products h2, .reviews h2, .contacts h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .product-grid, .review-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .product, .review {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover, .review:hover {
+            transform: translateY(-10px);
+        }
+
+        .product img, .review img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .product h3, .review h3 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .product p, .review p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .contacts p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        /* Форма заказа */
+        .order-form {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .order-form label {
+            display: block;
+            margin: 15px 0 5px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .order-form input, .order-form select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box; /* Добавлено */
+        }
+
+        .order-form button {
+            background: #d4af37;
+            color: #000;
+            padding: 15px 30px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%; /* Добавлено */
+            box-sizing: border-box; /* Добавлено */
+        }
+
+        .order-form button:hover {
+            background: #b69535;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            display: none;
+        }
+
+        /* Подвал */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Медиа-запросы для мобильных устройств */
+        @media (max-width: 768px) {
+            header {
+                padding: 60px 20px;
+            }
+            section {
+                padding: 30px 10px;
+            }
+            .products, .reviews, .contacts {
+                padding: 20px 10px;
+            }
+            .product, .review {
+                width: 100%;
+                margin: 10px 0;
+            }
+            .products h2, .reviews h2, .contacts h2 {
+                font-size: 2rem;
+            }
+            .product h3, .review h3 {
+                font-size: 1.2rem;
+            }
+            .product p, .review p {
+                font-size: 0.9rem;
+            }
+            .contacts p {
+                font-size: 1rem;
+            }
+            .order-form input, .order-form select {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+            .order-form button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            .cta-button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            nav .logo {
+                font-size: 1.2rem;
+            }
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+            .order-form input, .order-form select {
+                padding: 6px;
+                font-size: 0.8rem;
+            }
+            .order-form button {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            header p {
+                font-size: 0.9rem;
+            }
+            .cta-button {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .products h2, .reviews h2, .contacts h2 {
+                font-size: 1.8rem;
+            }
+            .product h3, .review h3 {
+                font-size: 1.1rem;
+            }
+            .product p, .review p {
+                font-size: 0.8rem;
+            }
+            .contacts p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигационная шапка -->
+    <nav>
+        <div class="logo">Запах денег</div>
+        <ul>
+            <li><a href="#products">Продукция</a></li>
+            <li><a href="#reviews">Отзывы</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <!-- Шапка -->
+    <header>
+        <h1>Запах денег</h1>
+        <p>Деньги не пахнут, а ты будешь</p>
+        <br>
+        <a href="#products" class="cta-button">Выбрать аромат</a>
+    </header>
+
+    <!-- Продукция -->
+    <section id="products" class="products">
+        <h2>Наша продукция</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="1.jfif" alt="Аромат 1">
+                <h3>Золотой стандарт</h3>
+                <p>Цена: 15 000 руб.</p>
+            </div>
+            <div class="product">
+                <img src="2.jpeg" alt="Аромат 2">
+                <h3>Черный бриллиант</h3>
+                <p>Цена: 18 000 руб.</p>
+            </div>
+            <div class="product">
+                <img src="3.jpeg" alt="Аромат 3">
+                <h3>Имперский шик</h3>
+                <p>Цена: 20 000 руб.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section id="reviews" class="reviews">
+        <h2>Отзывы клиентов</h2>
+        <div class="review-grid">
+            <div class="review">
+                <img src="5.jpeg" alt="Фото клиента">
+                <h3>Олег Тиньков, предприниматель</h3>
+                <p>"Это было не просто смело, этот парфюм действительно придает уверенность и притягивает деньги."</p>
+            </div>
+            <div class="review">
+                <img src="4.jpeg" alt="Фото клиента">
+                <h3>Илон Маск, менеджер</h3>
+                <p>"Я чувствую себя настоящей акулой бизнеса, когда использую этот аромат."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты и форма заказа -->
+    <section id="contacts" class="contacts">
+        <h2>Контакты</h2>
+        <p>Телефон: +7 (999) 123-45-67</p>
+        <p>Email: info@zapah-deneg.ru</p>
+        <p>Адрес: Дзержинск, пер. Жуковского, д. 2</p>
+
+        <!-- Форма заказа -->
+        <div class="order-form">
+            <h3>Заказать парфюм</h3>
+            <form id="orderForm">
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="phone">Номер телефона:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="perfume">Выберите аромат:</label>
+                <select id="perfume" name="perfume" required>
+                    <option value="Золотой стандарт">Золотой стандарт</option>
+                    <option value="Черный бриллиант">Черный бриллиант</option>
+                    <option value="Имперский шик">Имперский шик</option>
+                </select>
+
+                <button type="submit">Заказать</button>
+            </form>
+            <div class="success-message" id="successMessage">
+                Спасибо! Ваш заказ принят. Мы свяжемся с вами в ближайшее время.
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <p>&copy; 2025 Запах денег. Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Плавная прокрутка к разделам
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Обработка формы заказа
+        document.getElementById('orderForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Предотвращаем отправку формы
+
+            // Показываем сообщение об успешной отправке
+            document.getElementById('successMessage').style.display = 'block';
+
+            // Очищаем форму
+            this.reset();
+        });
+    </script>
+</body>
+</html>
